@@ -59,7 +59,8 @@ class Menu:
     def _calculate_equation(self):
         if self._equator.validate(self._data):
             if self._equator.is_progression:
-                answer = self._equator.calculate("calc", self._input.collect_calculation_input())
+                answer = self._equator.calculate("calc", self._input.collect_calculation_input("член прогрессии для "
+                                                                                               "вычисления"))
             else:
                 answer = self._equator.calculate()
             print(answer)
@@ -68,7 +69,8 @@ class Menu:
 
     def _progression_sum(self):
         if self._equator.validate(self._data) and self._equator.is_progression:
-            print(self._equator.calculate("sum", self._input.collect_calculation_input()))
+            print(self._equator.calculate("sum", self._input.collect_calculation_input("количество членов прогрессии "
+                                                                                       "для расчета суммы")))
         else:
             print("Выбранные аргументы не могут быть использованы для этого типа уравнения. Выберите другие.")
 
