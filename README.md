@@ -24,3 +24,8 @@
 
 ### 1. Python 3.11
 https://www.python.org/downloads/
+
+### 2. Запуск
+```shell
+python3 main.py
+```
