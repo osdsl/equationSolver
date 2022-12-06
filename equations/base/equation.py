@@ -1,3 +1,4 @@
+import random
 from abc import ABC, abstractmethod
 
 
@@ -25,6 +26,12 @@ class Equation(ABC):
     @abstractmethod
     def validate(self, data: list[float]) -> bool:
         pass
+
+    def generate_arguments(self) -> list[float]:
+        args = []
+        for _ in range(self.argument_count):
+            args.append(random.randrange(1, 1000, 1))
+        return args
 
     @abstractmethod
     def calculate(self, additional_arg_type=None, additional_input=None) -> list[float]:

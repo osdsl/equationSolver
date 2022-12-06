@@ -4,7 +4,7 @@ from equations.base.equation import Equation
 class InputReceiver:
     def _collect_float(self, arg_name) -> float:
         while True:
-            received = input(f"Введите {arg_name}:")
+            received = input(f"Введите {arg_name}:\n")
             try:
                 return float(received)
             except ValueError:
@@ -12,7 +12,7 @@ class InputReceiver:
 
     def _collect_int(self, arg_name) -> int:
         while True:
-            received = input(f"Введите {arg_name}:")
+            received = input(f"Введите {arg_name}:\n")
             try:
                 return int(received)
             except ValueError:
@@ -32,5 +32,3 @@ class InputReceiver:
 
     def collect_calculation_input(self, input_name) -> int:
         return self._collect_int(input_name)
-
-

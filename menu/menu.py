@@ -8,8 +8,8 @@ from input.input import InputReceiver
 
 
 class Menu:
-    _data: list[float]
-    _equator: Equation
+    _data: list[float] = []
+    _equator: Equation = None
     _input: InputReceiver
 
     def __init__(self):
@@ -41,14 +41,19 @@ class Menu:
                     return
                 case 1:
                     self._equator = LinearEquation()
+                    self._data = []
                 case 2:
                     self._equator = QuadraticEquation()
+                    self._data = []
                 case 3:
                     self._equator = CubicEquation()
+                    self._data = []
                 case 4:
                     self._equator = ArithmeticProgression()
+                    self._data = []
                 case 5:
                     self._equator = GeometricProgression()
+                    self._data = []
             return
 
     def _list_arguments(self):
@@ -63,7 +68,7 @@ class Menu:
                                                                                                "вычисления"))
             else:
                 answer = self._equator.calculate()
-            print(answer)
+            print(f"Ответ: {', '.join(map(lambda el: str(el), answer))}")
         else:
             print("Выбранные аргументы не могут быть использованы для этого типа уравнения. Выберите другие.")
 
@@ -93,13 +98,14 @@ class Menu:
 
             possible_entries = [8, 9, 0]
             if self._equator is not None:
-                possible_entries.append(1)
+                possible_entries.extend([1, 7])
                 if self._equator.is_progression:
                     print("1. Найти член прогрессии")
                     print("2. Найти сумму членов прогрессии")
                     possible_entries.append(2)
                 else:
                     print("1. Найти корни")
+                print("7. Сгенерировать аргументы")
 
             print('8. Установить аргументы')
             print("9. Установить уравнение")
@@ -114,6 +120,8 @@ class Menu:
                     self._calculate_equation()
                 case 2:
                     self._progression_sum()
+                case 7:
+                    self._data = self._equator.generate_arguments()
                 case 8:
                     self._set_arguments()
                 case 9:

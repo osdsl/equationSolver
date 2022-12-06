@@ -2,6 +2,7 @@ from equations.base.equation import Equation
 
 
 class LinearEquation(Equation):
+    _data = {}
 
     @property
     def is_progression(self) -> bool:
@@ -20,9 +21,10 @@ class LinearEquation(Equation):
         return 2
 
     def validate(self, data: list[float]) -> bool:
-        pass
+        if len(data) != self.argument_count:
+            return False
+        self._data = {"a": data[0], "b": data[1]}
+        return True
 
     def calculate(self, additional_arg_type=None, additional_input=None) -> list[float]:
-        pass
-
-
+        return [-self._data["b"] / self._data["a"]]
